@@ -19,6 +19,7 @@ const Header = () => {
             <Link> Home </Link>
             <Link> Home </Link>
             <Link> Home </Link>
+            <Link> Home </Link>
           </nav>
 
         <nav className="side_links">
