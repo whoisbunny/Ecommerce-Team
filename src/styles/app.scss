@@ -44,14 +44,14 @@ body{
 //   color: var(--primary1);
 // }
 
-// button{
-//   padding: 12px 10px;
-//   font-size: 14px;
-//   background: transparent;
-//   border-radius: 10px;
-//   border: 1px solid var(--lighter);
-// }
+button{
+  padding: 12px 10px;
+  font-size: 14px;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid $lighter;
+}
 
-// input:focus{
-//   outline: none;
-// }
+input:focus{
+  outline: none;
+}
