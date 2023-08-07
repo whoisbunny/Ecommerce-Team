@@ -1,9 +1,23 @@
 @import "./colors.scss";
 header {
-  background: $lighter2;
-  padding: 0 5.25rem;
 
+  background: $lighter;
+  padding: 0.5rem 5.25rem;
+ a{
+  text-transform: uppercase;
+}
   display: flex;
+  position: sticky;  
+  top: 0;
+  z-index: 1000;
+  
+  .header-hr{
+    width: 2px;
+    margin: 0 2rem;
+    height: 2rem;
+    
+    background-color: darken;
+  }
 }
 .nav_section {
   flex-basis: 83.4%;
@@ -23,13 +37,30 @@ header {
 }
 .side_links {
     display: flex;
-  width: 25%;
+  width: 20%;
+  >.side_btn{
+    // display: flex;
+   &:hover{
+    padding: 5px 15px;
+    border-radius: 10px;
+    background: $light;
+    
+   }
+   
+   }
+
   >a{
-      
-      margin-left: auto;
+    display: flex;
+    align-items: center;
+      margin: auto;
       gap: 1rem;
+>.a_icon{
+  font-size: 25px;
+  color: black;
+}      
   }
 }
+
 .search_box {
   display: flex;
     padding: 0 1rem;

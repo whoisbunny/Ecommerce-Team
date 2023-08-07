@@ -1,0 +1,94 @@
+@import "./colors.scss";
+.banner .back-details {
+  background: url(/src/assets/images/back.jpg);
+
+  height: 80vh;
+  background-position: top 25% right 0;
+  background-size: cover;
+  width: 100%;
+  padding: 0 80px;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  font-family: "League Spartan", sans-serif;
+
+  h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+  h1 {
+    font-size: 52px;
+    color: $search;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 1rem 0;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0.5rem 0;
+  }
+  a{
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: $primary1;
+    color: white;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+    &:hover{
+        background: transparent;
+        border: 1px solid $primary1;
+        color: $primary1;
+    }
+  }
+}
+
+
+.featured_products {
+  display: grid;
+  height: 100%;
+  margin: auto;
+
+  padding: 2rem;
+  p {
+    margin: 0.5rem 0;
+  }
+
+
+
+}
+
+.repair-services{
+  color: white;
+  .repair-details{
+    background: url(../assets/images/banner/b2.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 30vh;
+    justify-content: center;
+    background-position: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+button{
+  color: white;
+    background-color: $darker;
+    border: 1px solid transparent;
+    transition: 0.5s ease;
+    &:hover{
+      border: 1px solid $darker;
+    background-color: transparent;
+    }
+}
+}
+
+.new-arrivals{
+  padding: 1.5rem;
+  
+}

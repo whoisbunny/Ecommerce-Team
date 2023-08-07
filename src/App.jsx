@@ -1,9 +1,8 @@
 import './styles/app.scss'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Layout from "./components/layout/Layout"
-import  {
+import {
   Home,
-  Blog,
   Cart,
   Error,
   About,
@@ -13,7 +12,8 @@ import  {
   Forgotpasword,
   Checkout,
   Details,
-} from './pages/'
+  Shop,
+} from "./pages/";
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="blog" element={<Blog />} />
+            <Route path="shop" element={<Shop />} />
             <Route path="about" element={<About />} />
             <Route path="cart" element={<Cart />} />
             <Route path="contact" element={<Contact />} />

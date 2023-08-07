@@ -1,5 +1,4 @@
 import Home from "./Home";
-import Blog from "./Blog";
 import Cart from "./Cart";
 import Error from "./Error";
 import About from "./About";
@@ -9,11 +8,12 @@ import Signup from "./Signup";
 import Forgotpasword from "./Forgotpasword";
 import Checkout from "./Checkout";
 import Details from "./Details";
+import Shop from "./Shop";
 
 export {
   Home,
-  Blog,
   Cart,
+  Shop,
   Error,
   About,
   Contact,

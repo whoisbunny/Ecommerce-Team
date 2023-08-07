@@ -1,0 +1,12 @@
+@import './colors.scss';
+.hero{
+    padding: 2rem;
+    display: flex;
+    height: 200px;
+    .row{
+        display: grid;
+        height: 200px;
+        grid-template-columns: repeat(5 , 1fr);
+        object-fit: cover;
+    }
+}
