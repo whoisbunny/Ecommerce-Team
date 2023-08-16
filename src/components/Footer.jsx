@@ -112,7 +112,7 @@ const Footer = () => {
           <div className="row">
             <div className="flex-50">
               <p className="text-center text-md-start">
-                &copy;Developed by Eclar Developers 2023
+                &copy;Developed by whoisbunny-Team Developers 2023
               </p>
             </div>
             <div className="flex-50 ">

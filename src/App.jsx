@@ -14,6 +14,7 @@ import {
   Details,
   Shop,
 } from "./pages/";
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
+        <Toaster />
       </BrowserRouter>
     </>
   );

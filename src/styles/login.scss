@@ -1,0 +1,35 @@
+@import './colors.scss';
+
+.login-wrapper{
+    background: $lighter1;
+    .card{
+    //  width: max-content;   
+        background-color: $white;
+    }
+    input{
+        width: 100%;
+        padding: 0.5rem ;
+        border-radius: 5px;
+
+    }
+    
+    .card-body{
+        width: 500px;
+    }
+
+    .login_btn{
+        background-color: $primary1;
+        color: $white;
+        width: 100%;
+        padding: 1rem 0;
+        font-weight: 600;
+        
+        &:hover{
+            border: 1px solid $primary1;
+            background: transparent;
+            color: $primary1;
+
+        }
+    }
+}
+
