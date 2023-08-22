@@ -59,12 +59,20 @@ header {
       }
     }
 
+    // >div{
+    //   display: flex;
+    //   align-items: center;
+    //   margin: auto;
+    //   gap: 1rem; 
+    //   font-size: 25px;
+    //   cursor: pointer;
+    // }
      a {
       display: flex;
       align-items: center;
       margin: auto;
       gap: 1rem;
-      > .a_icon {
+       .a_icon {
         font-size: 25px;
         color: black;
       }
@@ -144,7 +152,7 @@ header {
     top:5vh;
     background: $lighter;
     cursor: pointer;
-    right: 1vh;
+    left: 0vh;
     box-shadow: 0px 2px 0px $dark;
     border-top: none;
 
@@ -158,8 +166,6 @@ header {
 
     .sub-menu-link {
       margin: 12px 0;
-      display: flex;
-      align-items: center;
 
       text-decoration: none;
       color: #525252;

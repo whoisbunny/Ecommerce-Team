@@ -1,0 +1,17 @@
+@import './colors.scss';
+
+.product_detail{
+    gap: 4%;
+}
+.detail_section{
+    display: flex;
+    flex-basis: 50%;
+    padding: 2rem;    
+    border: 2px solid red;
+}
+.image_section{
+    display: flex;
+    flex-basis: 46%;
+    padding: 2rem;
+    border: 2px solid black;
+}

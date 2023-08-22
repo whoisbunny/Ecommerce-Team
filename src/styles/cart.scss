@@ -12,12 +12,12 @@
     }
 
     .cartItem{
-    background-color: $white;
+    background-color: white;
     width: 100%;
     border-radius: 10px;
     margin: 2rem 0;
-    padding: 1rem;
-    display: grid;
+    padding: 2rem;
+    display: grid ;
     grid-template-columns: 1fr 3fr 1fr 1fr;
     align-items:center;
 
@@ -25,7 +25,11 @@
         width: 100px;
         height: 200px;
         object-fit: contain;
+        
 
+    }
+    p{
+        margin: 1rem 1rem;
     }
     >div{
         display: flex;
@@ -51,6 +55,7 @@
             place-content: center;
             height: 30px;
             width: 30px;
+            
         }
         
     }
@@ -79,9 +84,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        // margin-top: 5rem;
     
         >h2{
+            
+            
             margin: 1rem;
             font: 100 1.5rem 'robto';
             letter-spacing: 2px;

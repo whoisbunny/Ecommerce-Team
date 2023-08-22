@@ -1,39 +1,38 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-const API = import.meta.env.VITE_API; 
+const API = import.meta.env.VITE_API;
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit =async (event) => {
-    event.preventDefault();
-    // if (password == "") {
-    //   setError("Please enter correct details!");
-    // } else {
-      // TODO: Send signup request to server
-      // setError("Login successful");
-      // setEmail("");
-      // setPassword("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    setError("");
+    setPassword("");
+    setUsername("");
 
-      const responce = await fetch(`${API}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: "johnd",
-          password: "m38rmF$",
-        }),
-      });  
-      const token = await responce.json();
-      console.log(token);
+    axios({
+      url: `${API}/auth/login`,
+      method: "POST",
+      data: {
+        username: username,
+        password: password,
+      },
+    })
+      .then((resp) => {
+        dispatch({ type: "login", payload: resp.data.token });
+      })
+      .catch((err) => {
+        setError(err.response.data);
+      });
   };
-
-
 
   return (
     <section className="login-wrapper p-5">
@@ -46,12 +45,11 @@ const Login = () => {
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
-                    id="email"
-                    placeholder="enter email here ..."
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="enter username here ..."
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
                     // required
                   />
                 </div>

@@ -3,18 +3,21 @@ import { Link } from "react-router-dom";
 import { PiShoppingCartBold } from "react-icons/pi";
 import { AiOutlineUser, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { BsBoxSeam } from "react-icons/bs";
+import { CiLogout } from "react-icons/ci";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
+  const token = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const handleInputChange = (e) => {
     setSearchText(e.target.value);
   };
-
-  const { cartItems } = useSelector(state => state)
-  // console.log(this.state.cart);
-  console.log(cartItems);
+  const logout = () => {
+    dispatch({ type: "logout" });
+  };
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <>
@@ -68,21 +71,44 @@ const Header = () => {
               <AiOutlineUser className="a_icon" />
               <nav className="account_links">
                 <div className="sub-menu">
-                  <Link to={"signup"} className="sub-menu-link">
-                    <AiOutlineUser className="sub-icon" />
-                    <p>sign up</p>
-                    <span>&gt;</span>
-                  </Link>
-                  <Link to={'/'}  className="sub-menu-link">
-                    <BsBoxSeam className="sub-icon" />
-                    <p>orders</p>
-                    <span>&gt;</span>
-                  </Link>
-                  <Link to={"signup"} className="sub-menu-link">
-                    <AiOutlineHeart className="sub-icon" />
-                    <p>wishlist</p>
-                    <span>&gt;</span>
-                  </Link>
+                  <div className={`${!token ? "sub-menu-link" : "hidden "}`}>
+                    <Link to={"signup"}>
+                      <AiOutlineUser className="sub-icon" />
+                      <p>signup</p>
+                      <span>&gt;</span>
+                    </Link>
+                  </div>
+                  <div className={`${!token ? "sub-menu-link" : "hidden "}`}>
+                    <Link to={"login"}>
+                      <AiOutlineUser className="sub-icon" />
+                      <p>login</p>
+                      <span>&gt;</span>
+                    </Link>
+                  </div>
+
+
+
+                  <div className={`${token ? "sub-menu-link" : "hidden "}`}>
+                    <Link to={"/"}>
+                      <BsBoxSeam className="sub-icon" />
+                      <p>orders</p>
+                      <span>&gt;</span>
+                    </Link>
+                  </div>
+                  <div className={`${token ? "sub-menu-link" : "hidden "}`}>
+                    <Link to={"/"}>
+                      <AiOutlineHeart className="sub-icon" />
+                      <p>wishlist</p>
+                      <span>&gt;</span>
+                    </Link>
+                  </div>
+                  <div className={`${token ? "sub-menu-link" : "hidden "}`}>
+                    <Link to={"/"} onClick={() => logout()}>
+                      <CiLogout className="sub-icon" />
+                      <p>logout</p>
+                      <span>&gt;</span>
+                    </Link>
+                  </div>
                 </div>
               </nav>
             </Link>

@@ -10,6 +10,7 @@
 @import "./footer.scss";
 @import "./shop.scss";
 @import "./cart.scss";
+@import "./details.scss";
 
 
 
@@ -215,4 +216,7 @@ li{
             background: $white;
             border: 1px solid $primary1;
         }
+}
+.flex-basis-45{
+  flex-basis: 45%;
 }

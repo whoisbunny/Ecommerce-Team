@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,  useLocation,  useNavigate } from "react-router-dom";
 
-const API = import.meta.env.VITE_API; 
+
+const API = import.meta.env.VITE_API;
 const Shop = () => {
   return (
     <>
@@ -32,48 +33,47 @@ const Shop = () => {
       </section>
     </>
   );
-}
-
-
-
+};
 
 const Shopcontent = () => {
+
+  const token = useSelector((state) => state.user.userToken);
+  const navigate = useNavigate();
+
   
   const [Products, setProducts] = useState([]);
-  const { cartItems } = useSelector((state) => state);
+  const dispatch = useDispatch();
   
   useEffect(() => {
     allProducts();
   }, []);
-  
+
   const allProducts = async () => {
     const responce = await fetch(`${API}/products`);
     const data = await responce.json();
     setProducts(data);
-
   };
 
+  const filterresult = async (catItem) => {
+    const responce = await fetch(`${API}/products/category/${catItem}`);
+    const data = await responce.json();
+    setProducts(data);
+  };
 
-const filterresult =async (catItem) => {
-  const responce = await fetch(`${API}/products/category/${catItem}`);
-  const data = await responce.json();
-   setProducts(data);
-};
+  const addtoCart = (opt) => {
+    
+    if(token){
+      dispatch({ type: "addtoCart", payload: opt });
+      dispatch({ type: "calculatePrice" });
+    }
+    else{
+      alert("Please login to add to cart");
+    }
+    
+    
+  };
 
-  
-const dispatch = useDispatch()
-const addtoCart = (opt) => {
-dispatch({ type: "addtoCart", payload: opt });
-console.log(cartItems);
-
-
-}
   return (
-
-
-
-
-
     <>
       <aside className="category-section">
         <div className=" text-green w-full  uppercase ">
@@ -113,19 +113,20 @@ console.log(cartItems);
           </div>
         </div>
       </aside>
+
       <div className="flex product-section">
         <div className="row-grid-3">
           {Products.map((e) => {
             return (
               <>
                 <ProductCard
-            key={e.id}
-            title={e.title}
-            price={e.price}
-            image={e.image}
-            id={e.id}
-            handler={addtoCart}
-          />
+                  key={e.id}
+                  title={e.title}
+                  price={e.price}
+                  image={e.image}
+                  id={e.id}
+                  handler={addtoCart}
+                />
               </>
             );
           })}
@@ -133,45 +134,51 @@ console.log(cartItems);
       </div>
     </>
   );
-}
-
-
-
+};
 
 const ProductCard = ({ title, id, image, handler, price }) => {
-  return (<>
-  
-  
-  <Link className="card" id={id} key={id}>
-                  <img src={image} className=" card-img" alt="..." />
-                  <div className="card-body">
-                    <h4 className="mb-3 ">
-                      {title ? title.slice(0, 50) : ""}...
-                    </h4>
-                    <div className="p-3 m-auto text-center">
+  const dispatch = useDispatch();
+  const viewProductDetails = (id) => {
+    dispatch({ type: "productId" , payload: id});   
+  }
 
-                      <p className="price  mb-2">
-                        <span className="text-green">${price} </span>&nbsp;
-                      </p>
-                      <Link
-                        to="/details"
-                        // onClick={() => viewProductDetails(id)}
-                      >
-                        <p className="text-center mb-3">
-                          <button className="details_btn" id="clear-cart">
-                            View Details
-                          </button>
-                        </p>
-                      </Link>
+  return (
+    <>
+      <Link className="card" id={id} key={id}>
+        <img src={image} className=" card-img" alt="..." />
+        <div className="card-body">
+          <h4 className="mb-3 ">{title ? title.slice(0, 50) : ""}...</h4>
+          <div className="p-3 m-auto text-center">
+            <p className="price  mb-2">
+              <span className="text-green">${price} </span>&nbsp;
+            </p>
+            <Link to="/details">
+              <p className="text-center mb-3">
+                <button
+                  onClick={() => viewProductDetails(id)}
+                  className="details_btn"
+                  id="clear-cart"
+                >
+                  View Details
+                </button>
+              </p>
+            </Link>
 
-                      <div className="flex-center mb-2">
-                        <button className="cart-btn " onClick={()=>handler({id ,title,image, quantity:1})}>Add to cart</button>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-  </>)
-}
+            <div className="flex-center mb-2">
+              <button
+                className="cart-btn "
+                onClick={() =>
+                  handler({ id, title, image, price, quantity: 1 })
+                }
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
+};
 
-
-export default Shop
+export default Shop;

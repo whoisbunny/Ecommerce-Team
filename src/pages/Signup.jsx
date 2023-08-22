@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const API = import.meta.env.VITE_API; 
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -22,34 +23,35 @@ const Signup = () => {
       // setPassword("");
       // setConfirmPassword("");
 
-      const responce =await fetch(`${API}/users`, {
+       axios( {
+        url: `${API}/users`,
         method: "POST",
-        headers:{
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({
+        
+        data: {
           email: "John@gmai.com",
           username: "johnd",
           password: "m38rmF$",
           name: {
-            firstname: "John",
-            lastname: "Doe",
+            firstname: "",
+            lastname: "",
           },
           address: {
-            city: "kilcoole",
-            street: "7835 new road",
-            number: 3,
-            zipcode: "12926-3874",
+            city: "",
+            street: "",
+            number: "",
+            zipcode: "",
             geolocation: {
-              lat: "-37.3159",
-              long: "81.1496",
+              lat: "",
+              long: "",
             },
           },
-          phone: "1-570-236-7033",
-        }),
+          phone: "",
+        },
+      }).then((resp)=>{
+        console.log(resp);
+      }).catch((err)=>{
+        console.log(err);
       });
-     const data = await responce.json();
-      console.log(data);
       
 
     }

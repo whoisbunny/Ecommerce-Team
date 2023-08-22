@@ -1,5 +1,5 @@
 import './styles/app.scss'
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter,  Route, Routes } from "react-router-dom"
 import Layout from "./components/layout/Layout"
 import {
   Home,
@@ -35,7 +35,7 @@ function App() {
             <Route path="forgotpasword" element={<Forgotpasword />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="details" element={<Details />} />
-            <Route path="*" element={<Error />} />
+            <Route path="*" element={<Error  />} />
           </Route>
         </Routes>
         <Toaster />
