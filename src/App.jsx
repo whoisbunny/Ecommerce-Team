@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './styles/app.scss'
 import { BrowserRouter,  Route, Routes } from "react-router-dom"
 import Layout from "./components/layout/Layout"
@@ -16,6 +17,9 @@ import {
 } from "./pages/";
 import { Toaster } from 'react-hot-toast';
 
+=======
+import './App.css'
+>>>>>>> 2bcd87f3c1309ed32b4fe6157fa9b9887e8b1e5b
 
 function App() {
 
